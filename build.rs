@@ -27,7 +27,7 @@ fn main() {
         .flag("-O3")
         .flag("-ffast-math")
         .flag("-funroll-loops")
-        .flag("-DGGML_USE_OPENBLAS")
+        // .flag("-DGGML_USE_OPENBLAS")
         .define("_GNU_SOURCE", None) 
         .define("_POSIX_C_SOURCE", "200809L")  
         .compile("ggml");
