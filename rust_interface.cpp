@@ -59,4 +59,8 @@ rust::vec<float> embed_image(rust::String path) {
     return ret;
 }
 
+float embed_compare(const rust::vec<float> & p1, const rust::vec<float> & p2) {
+    return clip_similarity_score(p1.data(), p2.data(), vec_dim);
+}
+
 void end() { clip_free(ctx); }
