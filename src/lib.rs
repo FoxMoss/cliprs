@@ -14,15 +14,15 @@ mod ffi {
     }
 }
 
-pub fn rust_init(model_path: &str) {
+pub fn cliprs_init(model_path: &str) {
     init(model_path.to_string());
 }
 
-pub fn rust_end() {
+pub fn cliprs_end() {
     end();
 }
 
-pub fn rust_embed_text(text: String) -> Option<Vec<f32>>{
+pub fn cliprs_embed_text(text: String) -> Option<Vec<f32>>{
     let vec = embed_text(text);
 
     if vec.len() == 0{
@@ -31,11 +31,11 @@ pub fn rust_embed_text(text: String) -> Option<Vec<f32>>{
     return Some(vec);
 }
 
-pub fn rust_embed_compare(p1: &Vec<f32>, p2: &Vec<f32>) -> f32{
+pub fn cliprs_embed_compare(p1: &Vec<f32>, p2: &Vec<f32>) -> f32{
     embed_compare(p1, p2)
 }
 
-pub fn rust_embed_image(path: String) -> Option<Vec<f32>>{
+pub fn cliprs_embed_image(path: String) -> Option<Vec<f32>>{
     let vec = embed_image(path);
 
     if vec.len() == 0{
