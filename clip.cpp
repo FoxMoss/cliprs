@@ -12,7 +12,7 @@
 #include <vector>
 
 #include "clip.h"
-#include "clipers/ggml/include/ggml/ggml.h"
+#include "cliprs/ggml/include/ggml/ggml.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"

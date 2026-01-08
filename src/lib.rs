@@ -3,8 +3,8 @@ use crate::ffi::{embed_compare, embed_image, embed_text, end, init};
 #[cxx::bridge]
 mod ffi {
     unsafe extern "C++" {
-        include!("clipers/clip.h");
-        include!("clipers/rust_interface.h");
+        include!("cliprs/clip.h");
+        include!("cliprs/rust_interface.h");
 
         fn init(path: String);
         fn embed_text(text: String) -> Vec<f32>;

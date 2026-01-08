@@ -1,7 +1,9 @@
 [package]
-name = "clipers"
+name = "cliprs"
+description = "Rust bindings to CLIP.cpp"
 version = "0.1.12"
 edition = "2021"
+license = "MIT"
 
 [dependencies]
 cxx = "1.0"
