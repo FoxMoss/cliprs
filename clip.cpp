@@ -8,6 +8,7 @@
 #include <pthread.h>
 #include <regex>
 #include <stdexcept>
+#include <string>
 #include <thread>
 #include <vector>
 
@@ -18,6 +19,8 @@
 #include "stb_image.h"
 
 // #define CLIP_DEBUG
+
+extern "C" void clip_log_warning(const char* message);
 
 static std::string format(const char * fmt, ...) {
     va_list ap;
@@ -597,7 +600,7 @@ struct clip_ctx * clip_model_load(const char * fname, const int verbosity = 1) {
 
 bool clip_tokenize(const clip_ctx * ctx, const char * text, struct clip_tokens * tokens) {
     if (!ctx->has_text_encoder) {
-        printf("This GGUF file seems to have no text encoder\n");
+        clip_log_warning("This GGUF file seems to have no text encoder");
         return false;
     }
 
@@ -661,7 +664,8 @@ bool clip_tokenize(const clip_ctx * ctx, const char * text, struct clip_tokens *
                     i = j + 1;
                     break;
                 } else if (j == i) { // word.substr(i, 1) has no matching
-                    fprintf(stderr, "%s: unknown token '%s'\n", __func__, word.substr(i, 1).data());
+                    std::string msg = "Unknown token '" + word.substr(i, 1) + "'";
+                    clip_log_warning(msg.c_str());
                     i++;
                 }
             }
@@ -710,7 +714,6 @@ bool clip_image_load_from_file(const char * fname, clip_image_u8 * img) {
     int nx, ny, nc;
     auto data = stbi_load(fname, &nx, &ny, &nc, 3);
     if (!data) {
-        fprintf(stderr, "%s: failed to load '%s'\n", __func__, fname);
         return false;
     }
 
