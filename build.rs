@@ -1,4 +1,4 @@
-use libloading::Library;
+/*use libloading::Library;
 
 fn has_cuda() -> bool {
     #[cfg(target_os = "windows")]
@@ -7,8 +7,11 @@ fn has_cuda() -> bool {
     #[cfg(target_os = "linux")]
     let lib_name = "libcuda.so.1";
 
+    #[cfg(not(any(target_os = "windows", target_os = "linux")))]
+    let lib_name = "libcuda.so";
+
     unsafe { Library::new(lib_name).is_ok() }
-}
+}*/
 
 fn main() {
     cxx_build::bridge("src/lib.rs")
@@ -42,10 +45,10 @@ fn main() {
         .define("_GNU_SOURCE", None)
         .define("_POSIX_C_SOURCE", "200809L");
 
-    if has_cuda() {
+    /*if has_cuda() {
         ggml.flag("-DGGML_USE_CUBLAS").file("ggml-cuda.cu");
         println!("CUDA support available");
-    }
+    }*/
 
     ggml.compile("ggml");
 

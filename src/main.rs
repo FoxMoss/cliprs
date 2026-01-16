@@ -10,7 +10,7 @@ fn main() {
     let similarity = model.embed_compare(&text_embedding, &image_embedding);
     println!("Similarity: {}", similarity);
 
-    for warning in model.poll_warnings() {
+    for warning in cliprs::poll_warnings() {
         eprintln!("Warning: {}", warning);
     }
 }
