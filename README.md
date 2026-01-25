@@ -2,6 +2,12 @@
 
 [clip.cpp](https://github.com/monatis/clip.cpp) bindings to rust.
 
+## Grabing a model file
+
+I've been using
+[huggingface.co/mys/ggml_clip-vit-large-patch14](https://huggingface.co/mys/ggml_clip-vit-large-patch14)
+two tower models for testing. All quantization levels have worked great!
+
 ## Install
 
 To add to your project:
